@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Search Twitter Account Topics</h1>
+    <form action="../Topics/Index" method="POST">
+        Twitter Username: <input id="txtUserName" name="txtUserName" type="text" value="" />
+        <input type="submit" value="Search" />
+    </form>
+
+</body>

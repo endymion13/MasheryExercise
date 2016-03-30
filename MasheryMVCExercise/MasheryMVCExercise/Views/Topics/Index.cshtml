@@ -1,0 +1,109 @@
+﻿@*@model IEnumerable<MasheryExampleMVC.Models.Topics>*@
+
+@{
+    ViewBag.Title = "Topics";
+}
+
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+<head>
+    <title>Topics</title>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <!-- AngularJS-->
+    <script src="~/Scripts/angular1.4.min.js"></script>
+    
+
+    <script>
+        var TopicsApp = angular.module('myApp', []);
+        TopicsApp.controller('topicsCtrl', function ($scope, TopicsService) {
+
+            getTopics();
+            function getTopics() {
+                TopicsService.getTopics()
+                    .success(function (studs) {
+                        $scope.topics = JSON.parse(studs);
+                        console.log($scope.topics);
+                    })
+                    .error(function (error) {
+                        $scope.status = 'Unable to load customer data: ' + error.message;
+                        console.log($scope.status);
+                    });
+            }
+        });
+
+        TopicsApp.factory('TopicsService', ['$http', function ($http) {
+
+            var TopicsService = {};
+            TopicsService.getTopics = function () {
+                return $http.get('/Topics/GetTopics');
+            };
+            return TopicsService;
+
+        }]);
+
+
+    </script>
+
+</head>
+<body>
+
+    <h2 class="bg-primary">Topics</h2>
+
+    <div ng-app="myApp" ng-controller="topicsCtrl" ng-view class="table-responsive">
+
+
+        <div class="alert alert-info">
+            <p>Search Query: {{searchTopic}}</p>
+        </div>
+
+
+
+        <form>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-search"></i></div>
+
+                    <input type="text" class="form-control" placeholder="Search topic" ng-model="searchTopic">
+
+                </div>
+            </div>
+        </form>
+
+
+        <br />
+
+
+        <table class="table table-hover">
+            <tr ng-repeat="t in topics | filter : searchTopic">
+                <td>{{t.displayName}}</td>
+                <td><img src="{{t.imageUrl}}" width="50" height="50" alt="TopicImage" class="img-rounded" /></td>
+            </tr>
+        </table>
+
+        <br />
+
+        <br />
+
+    </div>
+
+</body>
+
+}
+else
+{
+    <h1>Please Login</h1>
+    @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+}
