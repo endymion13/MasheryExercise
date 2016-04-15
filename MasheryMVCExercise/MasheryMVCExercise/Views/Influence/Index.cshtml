@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<head>
+
+    <title>Topics</title>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <!-- Bootsrap CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <!-- AngularJS-->
+    <script src="~/Scripts/angular1.4.min.js"></script>
+
+    <!--Angular Logic -->
+    <script src="~/Scripts/getDataAPIInfluence.js"></script>
+
+
+</head>
+<body>
+
+    @using Microsoft.AspNet.Identity
+    @if (Request.IsAuthenticated)
+    {
+        <h2 class="bg-primary">Influence</h2>
+
+    <div ng-app="myApp" ng-controller="influencesCtrl" ng-view class="table-responsive">
+
+        <form>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                    @* Filter model *@
+
+                    <table>
+                        <tr>
+                            <td><input type="text" class="form-control" placeholder="Filter influence" ng-model="filterInfluence"></td>
+                            <td>@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { id = "HomeLink", @class = "btn btn-info" })</td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </form>
+
+        <hr />
+
+        <br />
+
+        @* With the repeater create table with the API data *@
+        <table class="table table-hover">
+            <tr class="success">
+                <td>Nickname</td>
+                <td>Klout Score</td>
+            </tr>
+            <tr ng-repeat="t in influences.myInfluencees | filter : filterInfluence">
+                <td>{{t.entity.payload.nick}}</td>
+                <td>{{t.entity.payload.score.score}}</td>
+
+            </tr>
+        </table>
+
+    </div>
+
+    }
+    else
+    {
+        <h1>Please Login</h1>
+        @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+    }
+
+</body>

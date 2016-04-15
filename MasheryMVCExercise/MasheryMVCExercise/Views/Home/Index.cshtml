@@ -4,12 +4,37 @@
 
 <head>
     <title>Home</title>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <!-- Bootsrap CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+
+    <script src="~/Scripts/homeActions.js"></script>
+
 </head>
 <body>
-    <h1>Search Twitter Account Topics</h1>
-    <form action="../Topics/Index" method="POST">
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <h1>Search Twitter Account </h1>
+    <form action="" method="POST" class="show">
         Twitter Username: <input id="txtUserName" name="txtUserName" type="text" value="" />
-        <input type="submit" value="Search" />
-    </form>
+        <div class="btn-group" role="group" >
+            <input type="submit" value="Search Topics" class="btn btn-info" dir="../Topics/Index" />
+            <input type="submit" value="Search Influences" class="btn btn-success" dir="../Influence/Index" />
+        </div>
+</form>
 
+}
+else
+{
+    <h1>Please Login</h1>
+    @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+}
 </body>
+    
