@@ -25,8 +25,9 @@
     <form action="" method="POST" class="show">
         Twitter Username: <input id="txtUserName" name="txtUserName" type="text" value="" />
         <div class="btn-group" role="group" >
-            <input type="submit" value="Search Topics" class="btn btn-info" dir="../Topics/Index" />
-            <input type="submit" value="Search Influences" class="btn btn-success" dir="../Influence/Index" />
+           
+             @Html.dirButton("btnTopics", "Search Topics", "../Topics/Index", "btn btn-info")
+             @Html.dirButton("btnInfluences", "Search Influences", "../Influence/Index", "btn btn-success")
         </div>
 </form>
 
