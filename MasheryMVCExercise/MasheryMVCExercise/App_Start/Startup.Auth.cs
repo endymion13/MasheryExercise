@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using MasheryMVCExercise.Models;
+using System.Web.Configuration;
 
 namespace MasheryMVCExercise
 {
@@ -60,8 +61,8 @@ namespace MasheryMVCExercise
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "352434262654-8trg1bvtibv2rlcaler0tqbt5qfq7nbe.apps.googleusercontent.com",
-                ClientSecret = "puNoerKlc72rzCNhVVuKkhR_"
+                ClientId = WebConfigurationManager.AppSettings["GoogleClientID"],
+                ClientSecret = WebConfigurationManager.AppSettings["GoogleClientSecret"]
             });
         }
     }

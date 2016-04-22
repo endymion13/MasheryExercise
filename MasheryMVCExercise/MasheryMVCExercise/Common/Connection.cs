@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
 
 namespace MasheryMVCExercise.Common
@@ -26,7 +27,7 @@ namespace MasheryMVCExercise.Common
         //Request a API's service
         public Connection(int RequestNumber, String UserName)
         {
-            this.keyAPI = "8meu67zymepdehpvk9k63z49";
+            this.keyAPI = WebConfigurationManager.AppSettings["keyAPI"];
             GetIDUser(UserName);    
             this.URLRequest = "http://api.klout.com/v2/user.json/" + this.IDUser + "/topics?key=" + keyAPI;
 

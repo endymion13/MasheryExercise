@@ -53,7 +53,6 @@ c:\users\eria\documents\visual studio 2013\Projects\MasheryMVCExercise\MasheryMV
 c:\users\eria\documents\visual studio 2013\Projects\MasheryMVCExercise\MasheryMVCExercise\obj\Debug\MasheryMVCExercise.csprojResolveAssemblyReference.cache
 c:\users\eria\documents\visual studio 2013\Projects\MasheryMVCExercise\MasheryMVCExercise\obj\Debug\MasheryMVCExercise.dll
 c:\users\eria\documents\visual studio 2013\Projects\MasheryMVCExercise\MasheryMVCExercise\obj\Debug\MasheryMVCExercise.pdb
-C:\Users\Eria\Documents\GitHub\MasheryExercise\MasheryMVCExercise\MasheryMVCExercise\obj\Debug\MasheryMVCExercise.csprojResolveAssemblyReference.cache
 C:\Users\Eria\Documents\GitHub\MasheryExercise\MasheryMVCExercise\MasheryMVCExercise\obj\Debug\MasheryMVCExercise.dll
 C:\Users\Eria\Documents\GitHub\MasheryExercise\MasheryMVCExercise\MasheryMVCExercise\bin\MasheryMVCExercise.dll.config
 C:\Users\Eria\Documents\GitHub\MasheryExercise\MasheryMVCExercise\MasheryMVCExercise\bin\MasheryMVCExercise.dll

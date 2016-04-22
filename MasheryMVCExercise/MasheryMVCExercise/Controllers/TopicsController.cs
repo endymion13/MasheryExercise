@@ -13,7 +13,7 @@ namespace MasheryMVCExercise.Controllers
         //
         // GET: /Topics/
         
-
+        [Authorize]
         public ActionResult Index(FormCollection form)
         {
           Session["UserName"] = form["txtUserName"];

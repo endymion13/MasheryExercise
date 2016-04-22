@@ -10,6 +10,7 @@ namespace MasheryMVCExercise.Controllers
     public class InfluenceController : Controller
     {
         // GET: Influence
+        [Authorize]
         public ActionResult Index(FormCollection form)
         {
             Session["UserName"] = form["txtUserName"];
